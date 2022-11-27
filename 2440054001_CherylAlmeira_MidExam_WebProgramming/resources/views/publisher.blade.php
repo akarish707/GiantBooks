@@ -1,0 +1,28 @@
+@extends('main')
+
+@section('title', 'Giant Book Supplier - Publisher')
+
+@section('content')
+    {{-- <div class=”title class="container-fluid fixed-bottom text-light align-middle" style="background-color: #727484"”> Book List </div> --}}
+    <div class="card-header py-3">
+        <h3 class="m-0 font-weight-bold text-black" style="background-color: #6069a8">Book Publisher</h3>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4 mb-10">
+        @foreach($publishers as $publisher)
+        <div class="col mb-5 mt-5">
+            <div class="card h-100 mb-5">
+                <img src="{{ asset('Storage/logo/'.$publisher->image) }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{$publisher->name}}</h5>
+                    <h6 class="card-title">{{$publisher->address}}</h6>
+                    <h6 class="card-title">{{$publisher->phone}}</h6>
+                    <h6 class="card-title">{{$publisher->email}}</h6>
+                    <br>
+                    <a href="{{url('publisher_detail', ['id'=>$publisher->id])}}" class="btn btn-primary mb-5">Details</a>
+                </div>
+            </div>
+        </div>
+    @endforeach
+    </div>
+@endsection
